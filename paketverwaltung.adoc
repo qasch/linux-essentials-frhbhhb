@@ -1,0 +1,43 @@
+= Paketverwaltung
+
+== Aktualisierung der Paketquellen
+
+ apt update
+
+* lädt eine Liste mit Informationen über die aktuell verfügbaren Pakete herunter (und gleicht diese mit den Versionen der lokal installierten Pakete ab)
+* es werden keine Änderungen am System vorgenommen, dafür muss das Kommando `apt upgrade` ausgeführt werden
+
+== Installation von Software
+ 
+ apt install <paket>
+
+* `apt` kann Abhaengigkeiten (zusaetzlich benoetigte Software) erkennen und automatisch aufloesen
+* Unter Debian und Derivaten werden Dienste bei der Installation automatisch gestartet
+
+
+== Deinstallation von Software
+ 
+ apt remove <paket>
+
+* Bei der Deinstallation bleiben die Konfigurationsdateien und alle automatisch mitinstallierten Abhaengigkeiten erhalten, werden also nicht mit entfernt
+* Automatisch installierte Abhaengigkeiten, die von keinem anderen Paket benoetigt werden, können mit `apt autoremove` entfernt werden
+
+ apt purge <paket>
+
+* Deinstalliert das Paket inklusive der Konfigurationsdateien
+
+== Paketmanager
+
+* Debian: `dpkg` Debian Package Manager
+* RedHat: `rpm` RedHat Package Manager
+
+=== Frontends
+
+* Debian: `apt-get` oder `apt`
+* RedHat: `yum` oder `dnf`
+
+== Aktualisierung des gesamten Systems
+
+ apt upgrade
+
+* Mit diesem Kommando wird sämtliche auf dem System vorhandene (über die Paketverwaltung isntallierte) Software aktualisiert

@@ -1,0 +1,57 @@
+= Dateisystem unter Linux
+
+.Dateisystem
+----
+/
+├── bin -> usr/bin  <1>
+├── boot <2>
+├── cdrom <3>
+├── dev <4>
+├── etc <5>
+├── home <6>
+├── lib -> usr/lib <7>
+├── lib32 -> usr/lib32 <8>
+├── lib64 -> usr/lib64 <9>
+├── libx32 -> usr/libx32 <10>
+├── lost+found <11>
+├── media <12>
+├── mnt <13>
+├── opt <14>
+├── proc <15>
+├── root <16>
+├── run <17>
+├── sbin -> usr/sbin <18>
+├── srv <19>
+├── swapfile <20>
+├── sys <21>
+├── tmp <22>
+├── usr <23>
+└── var <24>
+----
+
+<1> binaries: Ausfuehrbare Dateien (Binaries)
+<2> Konfiguration des Bootloaders, Initiale Ramdisk, Kernleimage etc.
+<3> Verzeichnis zum Einbinden eines CD/DVD Laufwerks
+<4> Geratedateien (Festplatten, Terminals, DVD Laufwerke, und andere), wird automatisch vom Dienst udev verwaltet
+<5> saemtliche systemweiten Konfigurationsdateien
+<6> Ueberverzeichnis fuer die Heimatverzeichnisse der regulaeren Benutzer
+<7> Dynamically Linked Libraries -> Systembibliotheken
+<8> Dynamically Linked Libraries -> Systembibliotheken
+<9> Dynamically Linked Libraries -> Systembibliotheken
+<10> Dynamically Linked Libraries -> Systembibliotheken
+<11> Wiederherstellungsinformationen fuer fehlgeschlagene Schreiboperationen, nicht menschenlesbar
+<12> Verzeichnis fuer statisch gemountete Speichermedien
+<13> Verzeichnis fuer dynamisch gemountete Speichermedien
+<14> Verzeichnis fuer zusaetzliche Software (die nicht standardmaessig ueber die Paketverwaltung installiert wurde)
+<15> virtuelles Dateisystem (procfs), wird zur Laufzeit generiert, existiert nur im Speicher, nur lesbar
+# enthaelt Informatinen zu jedem akutell laufendem Prozess
+# weitere Informationen ueber das System (CPU, Speicher, usw.)
+<16> Heimatverzeichnis des Benutzers root
+<17> weitere Laufzeitinformationen (PIDs bestimmer Programme etc.)
+<18> nur von root ausfuehrbare Binaries (Superuser Bin)
+<19> Verzeichnis fuer Dateien fuer den Betrieb als Server
+<20> Auslagerungsdatei
+<21> Erweiterung von /proc, virtuelles Dateisystem sysfs, nur im Speicher, hier koennen (einige) Dateien manipuliert/beschrieben werden
+<22> Temporaere Dateien
+<23> ausfuehrbare Dateien, Libraries, Manpages, SourceCode, weitere Dokumentationen, Beispieldateien etc. (bin, sbin, lib usw, sind hierhin verlinkt)
+<24> variable Dateien: Logdateien, Emails, Dateien fuer Webserver
