@@ -1,0 +1,78 @@
+= Pipes und Redirects
+
+== Standardkanäle
+
+* Standardeingabe `stdin`: 0
+* Standardausgabe `stdout`: 1
+* Standardfehler `stderr`: 2
+
+
+== Redirects
+
+Der Ausgabekanal (`stdout`) wird umgeleitet in eine Datei.
+
+Syntax: `<kommando> > <datei>`
+	`echo hallo > hallo.txt`
+
+* `>` einfacher Redirect: überschreibt den Inhalt der Datei
+* `>>` doppelter Redirect: fügt den Inhalt ans Ende der Datei an
+* falss `<datei>` nicht existiert, wird sie erstellt
+* Hilfe über die Manpage der `bash` (Suche nach `REDIRECTIONS`)
+
+=== Fehlerkanal
+
+* Umleitung des Fehlerkanals genau wie oben:
+
+ `<kommanod` 2> <datei-fehler>`
+ `ls laksjdlfkjaldf` 2> err.log`
+
+* Kanäle können also einzeln angesprochen und umgeleitet werden:
+
+ ls extistierende-datei nicht-existierende-datei 1>out.log 2>err.log
+ ls extistierende-datei nicht-existierende-datei >out.log 2>&1
+
+== Umgedrehter Redirect
+
+Mit `<` kann man den Inhalt einer Datei in den Eingabekanal eines Kommanods umleiten:
+
+ mail -s "Irgendein Betreff" tux@mail.com < mail-inhalt.txt
+
+
+== UNIX Philosophy
+
+1. Schreibe Programme, die genau eine Sache machen und diese machen sie gut
+2. Schreibe Programme so, dass sie zusammenarbeiten:
+	* Programme generieren Text als Ausgabe
+	* Programme sollten Text als Eingabe akzeptieren
+4. Denn Text ist ein universelles Interface
+
+-> KISS-Prinzip (Keep it simple stupid!)
+
+=== Pipe
+
+Mit der Pipe `|` kann der Ausgabekanal eines Kommandos an den Eingabekanal eines anderen Kommandos gesendet werden:
+
+ <kommando1> | <kommando2]
+ ls /etc | less
+
+Es ist durchaus üblich, mehrere Pipes miteinander zu kombinieren -> Kommandopipeline
+
+= grep
+
+Mit `grep` kann der Inhalt von Dateien nach einem _Pattern_ durchsucht werden. Ein _Pattern_ ist hier eigentlich ein _Regulärer Ausdruck/RegEx_, eine einfache Zeichenkette funktioniert aber auch.
+
+= cut
+
+= wc
+
+= Arten von Kommandos
+
+* extern realisierten Kommanods (nicht in `bash` enthalten, werden zusätzlich installiert)
+* intern realisierten Kommanods: builtins
+** Aufruf der Hilfe mit `help <builtin>`, des weiteren gibt es meist auch einen entsprechenden Abschnitt in der Manpage der `bash`
+* mit dem Kommando `type` kann ermittelt werden, um welche Art von Kommando es sich handelt:w
+
+
+
+
+
