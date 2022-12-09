@@ -6,7 +6,6 @@
 
 * lädt eine Liste mit Informationen über die aktuell verfügbaren Pakete herunter (und gleicht diese mit den Versionen der lokal installierten Pakete ab)
 * es werden keine Änderungen am System vorgenommen, dafür muss das Kommando `apt upgrade` ausgeführt werden
-* git ist toll
 
 == Installation von Software
  
