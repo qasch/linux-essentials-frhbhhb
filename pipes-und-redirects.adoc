@@ -1,4 +1,4 @@
-= Pipes und Redirects
+= Pipes, Redirects und Filterkommandos
 
 == Standardkanäle
 
@@ -57,19 +57,19 @@ Mit der Pipe `|` kann der Ausgabekanal eines Kommandos an den Eingabekanal eines
 
 Es ist durchaus üblich, mehrere Pipes miteinander zu kombinieren -> Kommandopipeline
 
-= grep
+== grep
 
 Mit `grep` kann der Inhalt von Dateien nach einem _Pattern_ durchsucht werden. Ein _Pattern_ ist hier eigentlich ein _Regulärer Ausdruck/RegEx_, eine einfache Zeichenkette funktioniert aber auch.
 
 `grep` steht für "Go Regular Expression Print" (`g/rgex/p`)
 
-== Ein paar Optionen von grep
+=== Ein paar Optionen von grep
 
 - `-n` Zeigt die Zeilennummer an
 - `-i` Case-Insensitive Suche
 - `-r` rekursive Suche (so können ganze Verzeichnisse durchsucht werden)
 
-= cut
+== cut
 
 Mit `cut` können Spalten aus Textströmen/Dateien herausgefiltert werden:
 
@@ -80,7 +80,7 @@ Alle Benutzernamen auf dem System ausgeben lassen:
 
  cut -d: -f1 /etc/passwd
 
-= wc
+== wc
 
 Mit `wc` kann man die Anzahl der Zeilen, Wörter und Bytes einer Datei / eines Textstroms zählen:
 
