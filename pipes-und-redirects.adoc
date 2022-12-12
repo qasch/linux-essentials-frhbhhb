@@ -68,6 +68,8 @@ Mit `grep` kann der Inhalt von Dateien nach einem _Pattern_ durchsucht werden. E
 - `-n` Zeigt die Zeilennummer an
 - `-i` Case-Insensitive Suche
 - `-r` rekursive Suche (so können ganze Verzeichnisse durchsucht werden)
+- `-c` zählt die Ergebnisse anstatt sie auszugeben
+- `-w` Suchbegriff muss exakt stimmen, ein einzelnes _Wort_
 
 == cut
 
