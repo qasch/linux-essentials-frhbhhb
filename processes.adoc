@@ -1,0 +1,29 @@
+= Prozesse
+
+* Ein Prozess ist ein sich in der Ausführung befindliches Programm, mit seiner Auführungsumgebung 
+* kann sowohl ein Dienst als auch ein Vordergrundprozess sein
+* Prozesse wissen nichts voneinander
+* jeder Prozess ist eindeutig über seine PID (Process ID) ansprechbar
+* Prozesse sind hierarchisch (in einer Baumstruktur) geordnet
+* die einzige Kenntnis eines Prozesses über andere ist die PID des jeweiligen Elternprozesses (PPID), also des Prozesses, der ihn gestartet hat
+* ein Prozess läuft im Benutzerkontext (-> Rechten) des Benutzers, der ihn gestartet hat
+* Somit kann ein Prozess nur von dem Benutzer beeinflusst werden, der ihn gestartet hat
+
+== Kommando ps
+
+* sehr umgangreiche Manpage, einfache Hilfe z.B. mit:
+
+ ps --help simple
+ ps --help list
+
+* Das Kommando `ps` ohne Optionen zeigt alle Prozesse der *aktuellen Shell* an.
+* Alle Prozesse auf dem System können z.B. wie folgt angezeigt werden:
+
+ ps -aux
+ ps -ef
+
+== Prozesse beeinflussen
+
+* ein sich im Vordergrund befindlicher Prozess kann mit der Tastenkomnination `STRG+Z` angehalten/pausiert werden
+* mit dem Kommando `fg` kann er wieder in den Vordergrund geholt und weiter ausgeführt werden
+* mit dem Kommando `bg` wird er im Hintergrund weiter ausgeführt
