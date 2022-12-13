@@ -1,0 +1,74 @@
+= Variablen
+
+Zuweisung:
+
+ variablen_name=wert
+
+Substitution/Ausgabe:
+
+ $variablen_name
+
+ echo $variablen_name
+
+Einer Variablen kann jeder beliebige Wert zugewiesen werden, unabhängig vom Typ (String, Int, Float etc [gibt es so eigentlich nicht in BAHS]).
+
+Varaiblen können immer wieder neue Werte zugewieden werden, der vorherige wird dabei überschrieben.
+
+== Shellvariablen
+
+Shellvariablen existieren nur im Speicher bzw. in der aktuellen Shell (nicht in Subshells usw.).
+
+
+== Umgebungsvariablen / Systemvariablen
+
+Umgebungsvariablen sind nicht auf die aktuelle Shell beschränkt.
+
+Durch das Schlüsselwort `export` kann eine Variable auch in *Subshells* verfügbar gemacht werden, aber nicht in Eltern- oder anderen Shells.
+
+ export foo=hallo
+
+ bar=huhu
+ export bar
+
+Mit dem Kommanod `env` kann man sich alle gesetzten Umgebungsvariablen anzeigen lassen.
+
+Das Kommanod `set` zeigt unter anderem alle Variablen an, die in der aktuellen Shell gesetzt sind.
+
+Um Umgebungsvariablen auch über einen Reboot systemweit gültig zu machen, kann man diese in einer entsprechenden Datei (z.B. `.profile` oder `.bashrc`) schreiben (mit `export` davor).
+
+Die Variable existiert dann allerdings nur für den jeweiligen Benutzer, nicht für alle Benutzer auf dem System.
+
+Um die Variable für alle Benutzer zu definieren, wählen wir eine Datei unter `/etc`, z.B. `/etc/profile`.
+
+== Konvention Schreibweise
+
+Umgebungs- bzw. Systemvariablen werden in _CAPTITALS_ geschrieben, Shellvariablen in _kleinbuchstaben_.
+
+== Substitutionsarten
+
+=== Variablensubstitution
+
+ os=linux
+ echo ${os}enthusiast
+
+=== Kommandosubstitution
+
+ var_name=$(kommando)
+
+ datum=$(date)
+ datum=`date`     # alte Schreibweise mit Backticks
+
+ anzahl_programme=$(ls -l /usr/bin | wc -l)
+
+Ausgabe des Kommandos `date` wird in Variable `datum` abgelegt.
+
+Das `kommando` kann beliebig komplex sein (mit Optionen, Pipes etc.).
+
+Hintergundinfo: In beiden Fällen wird das Kommando in einer Subshell ausgeführt.
+
+Alle Infos hierzu sind in der Manpage der `bash` zu finden.
+
+
+
+
+
