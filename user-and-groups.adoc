@@ -1,0 +1,37 @@
+= Benutzer und Gruppen
+
+Es existieren verschiedene Arten von Benutzern:
+
+* Reale Benutzer (können sich am System anmelden)
+** unprivilegierte Benutzer mit eingeschränkten Rechten
+** SuperUser `root` (darf alles)
+* Pseudo/System Benutzer (können sich nicht am System anmelden, existieren für die verschiedenen Dienste auf dem System)
+
+== Benutzer erstellen
+
+Unter Debian-basierten Systemen kann das interaktive Programm `adduser` verwendet werden. Das diesem Programm zugrundeliegende Tool `useradd` ist auf jeder Distribution vorhanden, ist sehr flexibel, es müssen aber die entsprechenden Optionen übergeben werden. Außerdem muss anschließend z.B. mit dem Kommando `passwd` ein Passwort für den Benutzer erstellt werden.
+
+=== adduser
+
+ adduser <user>
+
+Bei `adduser` werden die nötigen Daten interaktiv abgefragt, so auch das gewünschte Passwort.
+
+=== useradd
+
+ useradd <user>
+
+Macht folgendes:
+
+1. Erstellt den Benutzer (Eintrag in `/etc/passwd`)
+2. Erstellt eine initiale Gruppe für den Benutzer mit gleichem Namen (`/etc/group`)
+3. Erstellt einen Eintrag in `/etc/shadow`. Hier wird für das Passwort aber nur ein `!` eingetragen, der Account ist also gesperrt.
+
+ useradd -m <user>
+
+Erstellt zusätzlich ein Heimatverzeichnis unter `/home` und kopiert die Standarddateien aus `/etc/skel` dorthin.
+
+== Benutzer entfernen
+
+ userdel <user>      
+ userdel -r <user>   # Heimatverzeichnis wird mit entfernt
