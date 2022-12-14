@@ -27,3 +27,36 @@
 * ein sich im Vordergrund befindlicher Prozess kann mit der Tastenkomnination `STRG+Z` angehalten/pausiert werden
 * mit dem Kommando `fg` kann er wieder in den Vordergrund geholt und weiter ausgeführt werden
 * mit dem Kommando `bg` wird er im Hintergrund weiter ausgeführt
+* mit der Tastenkombination `STRG+C` kann ein Vordergrundprozess beendet werden (ordnungsgemäß) 
+
+=== Das Kommando kill
+
+Mit `kill` können Signale an Prozesse gesendet werden. Ohne Angabe einer Option wir das Signal `15) SIGTERM` gesendet, das ist die Aufforderung an den Prozess, sich zu beenden.
+
+ kill <PID>
+ kill -s <signal> <PID>
+ kill -<signal> <PID>
+
+Zum Beenden eines Prozesses können (je nach Situation) auch andere Signale gesendeet werden, z.B. `2) SIGINT` (-> Tastenkombination `STRG+C`).
+
+Einen nicht mehr reagierenden Prozess beendet man mit `9) SIGKILL`. Hier wird das Siganl nicht an den Prozess selbst gesendet, sondern der Kernel/Scheduler entfernt den entsprechenden Prozess aus der Prozesslist. Es ist also egal, ob der Prozess noch reagiert oder nicht, er wird zwangsweise beendet.
+
+Mit den Kommandos `pgrep` bzw. `pkill` kann direkt die PID eines Prozesses ermittelt bzw. angesprochen werden.
+
+Weitere Infos zu den Signale sind in der Manpage Sektion 7 zu finden: `man 7 signal`.
+
+=== Das Kommando killall 
+
+`killall` funktioniert prinzipiell genauso wie `kill`, hier übergeben wir allerdings den Namen eines Prozesses/Programms. Vorsicht: Es werden *alle* Prozesse mit deisem Namen beeinflusst/beendet.
+
+
+== Die Prozessmanager top und htop
+
+`top` ist ein interaktives Programm, welches fortlaufend alle laufenden Prozesse des Systems geordnet anzeigt. Aufruf der Hilfe mit `?`.
+
+`htop` ist die etwas schönere und komfortablere Variante (muss allerdings mit `sudo apt install htop` installiert werden).
+
+
+
+
+
