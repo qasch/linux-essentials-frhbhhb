@@ -65,10 +65,23 @@ Das Kommando `groupadd` existiert hingegen auf allen Distributionen.
 
 == Gruppe löschen
 
-Mit dem Kommando `groupdel` kann eine Benutzergruppe wieder entfernt werden. Die Gruppe darf keine Mitglieder mehr haben und existieren. Die primäre Gruppe eines Benutzers kann nicht entfernt werden.
+Mit dem Kommando `groupdel` kann eine Benutzergruppe wieder entfernt werden. Die Gruppe wird entfern, unabhängig davon, ob sie Mitglieder hat oder nicht. Die primäre Gruppe eines Benutzers kann nicht entfernt werden.
 
 == Benutzer einer Gruppe hinzufügen 
 
 Beim Hinzufügen eines Benutzers zu einer Gruppe muss man aufpassen, nicht aus Versehen die bestehenden Gruppenzugehörigkeiten zu überschreiben. Die Option `-G` des Kommandos `usermod` erwartet eine absolute List aller Gruppenzugehörigkeiten. Durch den zusätzlichen Schalter `-a` wird die Liste den bestehenden Gruppenzugehörigkeiten hinzugefügt:
 
  usermod -aG <gruppe(n)> <user>
+
+== Benutzer aus einer Gruppe entfernen
+
+In den meisten Distributionen kann man analog zu obigem Kommando Gruppenzugehörigkeiten mit der Option `-r` entfernen:
+
+ usermod -rG <gruppe(n)> <user>
+
+Unter Debian-basierten Distributionen geht es auch mit dem Kommando `deluser`:
+
+ deluser <user> <group>
+ deluser tux adm          # Benutzer tux ist nicht mehr Mitglied der Gruppe adm
+
+
