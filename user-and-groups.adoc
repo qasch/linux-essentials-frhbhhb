@@ -40,3 +40,35 @@ Um das Verhalten von `adduser` zu imitieren, müssten folgende Kommandos ausgef�
 
  userdel <user>      
  userdel -r <user>   # Heimatverzeichnis wird mit entfernt
+
+== Passwörter
+
+== Arten von Gruppen
+
+=== initiale Gruppe
+
+Jeder Benutzer muss mindestens einer Gruppe angehören. Dies ist die _initiale_ Gruppe und heißt auf den meißten Distributionen genauso wie der Benutzer selbst. Auf älteren Systemen oder einigen Distributionen ist dies für alle regulären Benutzer die Gruppe `user`.
+
+=== sekundäre Gruppen
+
+Als _sekundäre_ Gruppen werden alle weiteren Gruppen, denen der Benutzer angehört, bezeichnet. Sie werden z.B. verwendet, um dem Benutzer oder einer Gruppe von Benutzern mehr Rechte (im Zusammenspiel mit der Rechtevergabe) zu gewähren.
+
+== Gruppen erstellen
+
+Mit dem Kommando `addgroup` können Gruppen erstellt werden. Existiert aber nur auf Debian basierten Distributionen.
+
+ addgroup <gruppe>
+
+Das Kommando `groupadd` existiert hingegen auf allen Distributionen.
+
+ groupadd <gruppe>
+
+== Gruppe löschen
+
+Mit dem Kommando `groupdel` kann eine Benutzergruppe wieder entfernt werden. Die Gruppe darf keine Mitglieder mehr haben und existieren. Die primäre Gruppe eines Benutzers kann nicht entfernt werden.
+
+== Benutzer einer Gruppe hinzufügen 
+
+Beim Hinzufügen eines Benutzers zu einer Gruppe muss man aufpassen, nicht aus Versehen die bestehenden Gruppenzugehörigkeiten zu überschreiben. Die Option `-G` des Kommandos `usermod` erwartet eine absolute List aller Gruppenzugehörigkeiten. Durch den zusätzlichen Schalter `-a` wird die Liste den bestehenden Gruppenzugehörigkeiten hinzugefügt:
+
+ usermod -aG <gruppe(n)> <user>
