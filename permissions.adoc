@@ -104,6 +104,13 @@ Beispiele:
  chmod 640 datei1
  chmod 576 datei2
 
+
+ chmod 755 file.txt (-> rwxr-xr-x)
+ chmod 666 file.txt (-> rw-rw-rw-)
+ chmod 700 file.txt (-> rwx------)
+ chmod 000 file.txt (-> ---------)
+ chmod 777 file.txt (-> rwxrwxrwx)
+
 == Ändern von Besitzvrehältnissen
 
  chown <user> datei
