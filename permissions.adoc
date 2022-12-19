@@ -1,0 +1,114 @@
+= Berechtigungen
+
+Bedeutung der Ausgabe von `ls -l`:
+
+ SD User Group Others    Owner Group Size Timestamp    filename
+ --------------------------------------------------------------
+ - rw-  rw-   r--      1 tux  tux    36  Dec 16 10:22 linux.txt
+
+SD: (Special Designator) gibt an, um was für eine Art von Datei es sich handelt:
+
+* `-` reguläre Datei
+* `d` Directory/Verzeichnis
+* `l` Symbolic Link/Verknüpfung
+* `b` Block Device (Festplatte, USB-Stick ...)
+* `c` Character Device (`/dev/zero`, `/dev/null` ...)
+
+== Bedeutung der Symbole
+
+* `-` keine Berechtigung
+* `r` read / lesen
+* `w` write / schreiben
+* `x` execute / ausführen
+
+== Ändern von Berechtigungen
+
+Nur der Besitzer einer Datei (oder `root`) darf deren Berechtigungen ändern.
+
+Berechtigungen werden mit dem Kommando `chmod` vergeben.
+
+=== symbolische Rechtevergabe
+
+Bei der symbolischen Rechtevergabe werden die oben erwähnten Symbole (`u,g,o,a,r,w,x`) verwendet. Es folgen ein paar Beispiele:
+
+ chmod u-w datei	# Besitzer Schreibberechtigungen entziehen
+ chmod g-w datei	# Gruppe Schreibberechtigungen entziehen
+ chmod ug+w datei	# Besitzer und Gruppe Schreibberechtigungen hinzufügen
+ chmod ug+rwx datei     # Besitzer und Gruppe all Rechte hinzufügen
+ chmod o=r datei        # Others haben ausschließlich Leserechte
+
+==== Allgemeine Syntax/Möglichkeiten
+
+ chmod <user,group,others,all>+-=<read,write,execute> datei
+ chmod <u,g,o,a>+-=<r,w,e> datei
+
+=== oktale Rechtevergabe
+
+Mit der oktalen/numerischen Rechtevergabe können bzw. müssen alle Rechte für Besitzer, Gruppe und Others in einem Rutsch vergeben werden. Jedes Berechtigungsbit wird dabei von einem Oktalwert repräsentiert:
+
+ Okalsystem: Ziffern von 0 bis 7
+
+ x : 1  (ausführen)
+ w : 2  (schreiben)
+ r : 4  (lesen)
+
+Die Werte für die einzelnen Berechtigung werden addiert, um so alle Berechtigungen je für den Besitzer, die Gruppe und den Rest der Welt zu vergeben:
+
+ Owner  (lesen, schreiben, ausführen) -> 4 + 2 + 1 = 7
+ Group  (lesen, schreiben)            -> 4 + 2     = 6
+ Others (lesen)			      -> 4         = 4
+
+Das entsprechende Kommando, um obige Rechte zu vergeben, würde demnach wie folgt aussehen:
+ 
+ chmod 764 datei
+
+==== Zusammenhang Ziffern Oktalsystem / Binärsystem
+
+ Okt   Bin
+       rwx 
+ ---------
+  1    001
+  2    010
+  4    100
+
+ Bin  Okt   Sym
+ ---------------
+ 001  (1) -> --x
+ 010  (2) -> -w-
+ 011  (3) -> -wx
+ 100  (4) -> r--
+ 101  (5) -> r-x
+ 110  (6) -> rw-
+ 111  (7) -> rwx
+
+
+Man kann die Anzeige der Berechtigungen (mit einen `ls -l`) auch wie folgt interpretieren:
+
+ 110 110 100  -> 664
+ rw- rw- r--
+
+ 011101110
+ -wxr-xrw-
+
+ 011 101 110 -> 356
+ -wx r-x rw-
+
+Beispiele:
+
+ datei1:  Besitzer: rw, Grupee: r, Others: -
+ datei2: Besitzer: rx, Grupee: rwx, Others: rw
+	
+
+       ugo
+ ---------------- 
+ chmod 640 datei1
+ chmod 576 datei2
+
+== Ändern von Besitzvrehältnissen
+
+ chown <user> datei
+ chown <user>:<group> datei
+ chown :<group> datei         # nur Gruppe ändern
+ chgrp <group> datei          # nur Gruppe ändern
+
+
