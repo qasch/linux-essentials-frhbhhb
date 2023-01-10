@@ -3,14 +3,15 @@
 Reguläre Ausdrücke bestehen aus Zeichenfolgen, die ein Muster bilden, mit
 welchem zutreffende Zeichenfolgen in einem Textabschnitt gefunden werden können.
 
-* Reguläre Ausdrücke bestehen aus mindestens einem /Atom/
-* ein /Atom/ ist ein einzelnes Zeichen mit oder ohne Sonderbedeutung
+* Reguläre Ausdrücke bestehen aus mindestens einem _Atom_
+* ein _Atom_ ist ein einzelnes Zeichen mit oder ohne Sonderbedeutung
 * Zeichen mit Sonderbedeutung sind z.B.
 ** `.`: passt auf jedes Zeichen
-** `^`: passt auf den Anfang einer Zeile (/anchor/)
-** `$`: passt auf das Ende einer Zeile (/anchor/)
+** `^`: passt auf den Anfang einer Zeile (_anchor_)
+** `$`: passt auf das Ende einer Zeile (_anchor_)
 
 Beispiele:
+
 * `bc` passt auf `abcd`, aber nicht auf `a1cd`
 * `.c` passt sowohl auf `abcd`, als auch auf `a1cd`
 * `^cd` passt nicht auf `abcd`
@@ -33,17 +34,18 @@ Beispiele:
 ** `[a-z]` passt auf alle Kleinbuchstaben
 * Zeichenklassen können mit einzelnen Zeichen und Bereichen kombiniert werden
 * dürfen aber nicht am Ende eines Bereichs stehen
-* sie dürfen nur innerhalb der Brackt Expansion genutzt werden, nicht aber ausserhalb der Klammern
+* sie dürfen nur innerhalb der Bracket Expansion genutzt werden, nicht aber ausserhalb der Klammern
 
 == Quantifiers
 
-* hiermit kann die _Reichweit_ eines Atoms gesteuert werden
+* hiermit kann die _Reichweite_ eines Atoms gesteuert werden
 * es wird so eine _Atom Sequence_ definiert, also eine Wiederholung bestimmter Zeichen
 * Quantifiers haben eine unterschiedliche Bedeutung, je nach genutztem Standard
 ** POSIX definiert zwei Arten von RegEx: _basic_ und _extended_
 
 |===
 |Quantifier |_basic_  |_extended_ | literale Bedeutung
+
 | `*`
 | beliebig oft
 | beliebig oft
@@ -66,12 +68,12 @@ Beispiele:
 ** `{i}`: das Atom muss exakt _i_ mal vorkommen
 *** `[:blank:]{2}` passt auf exakt zwei Leerzeichen
 ** `{i,}`: dass Atom muss mindestens _i_ mal vorkommen
-*** `[:blank:]{2,}` passt auf exakt mindestens Leerzeichen
+*** `[:blank:]{2,}` passt auf mindestens Leerzeichen
 ** `{i,j}`: mindestens _i_ mal und maximal _j_ mal
 *** `xyz{2,4}` passt auf `xy` gefolgt von zwei bis vier `z` Zeichen
 * passt sowohl ein kurzer als auch ein lange Substring wird der lange gewählt
 * in Basic RegEx müssen die Delimiter hinter einem `\` stehen:
-  * `\{` und `\}`
+** `\{` und `\}`
 * ansonsten reguläre Zeichen
 * wenn auf `\{` ein anderes Zeiche als ein Integer folgt, ist es nicht der Beginn eines Bounds, wird also literal gedeutet
 
