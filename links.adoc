@@ -1,0 +1,19 @@
+= Links
+
+== Symbolische Links
+
+Analogie zu den Verknüpfungen unter Windows.
+
+ ln -s <link-ziel> <symlink-name>
+
+Berechtigungen sind immer _voll_. Der Versuch, die Berechtigungen des Links zu ändern führen dazu, dass die Berechtigungen der Originaldatei geändert werden.
+
+Existiert das Link-Ziel nicht mehr (gelöscht, verschoben) spricht man von einem verwaisten oder toten Link.
+
+Es können Dateien und Verzeichnisse verlinkt werden, auch über Partitionsgrenzen hinaus.
+
+== Hardlinks
+
+Hardlinks unterscheiden sich von Softlinks dadurch, dass Hardlinks im Prinzip nichts anderes sind, als ein weitere Dateiname/Zeiger auf einen bestimmten Speicherbereich.
+
+Hardlinks verbrauchen also so gut wie gar keinen Platz auf dem Datei

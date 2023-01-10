@@ -1,0 +1,24 @@
+= Dateien suchen mit locate und find
+
+== locate
+
+* benutzt im Hintergrund eine Datenbank
+* dadurch ist die Suche sehr schnell
+* die Datenbank wird automatisch (i.d.R. einmal pro Tag aktualisiert)
+* neu erstellt Dateien und Verzeichnisse werden nicht automatisch in die DB aufgenommen
+* die DB kann manuell mit dem Kommando `updatedb` erfrischt werden
+* die Suche kann nicht wirklich fein konfiguriert werden
+* es wird das gesamte Dateisystem durchsucht
+
+
+== find
+
+* Klassiker zur Suche
+* erlaubt eine sehr genaue EInstellung der Suche 
+* es kann z.B. nach Zeitpunkten, Dateigrößen, Dateizugehörigkeiten usw. gesucht werden
+* es wird keine Datenbank genutzt, die Suche erfolgt auf Dateisystemebene und ist dadurch deutlich langsamer als mit `locate`
+* eine weitere Eigenschaft von `find` ist die Möglichkeit, über `-exec` ein Kommando auf jedes einzelne Suchergebnis anzuweden (z.B. könnten alle gefundenen Dateien gelöscht werden)
+* die Syntax von `find` ist etwas gewöhnungsbedürftig
+* `find` ohne Optionen listet alle Dateien im aktuellen Verzeichnis rekursiv auf
+
+

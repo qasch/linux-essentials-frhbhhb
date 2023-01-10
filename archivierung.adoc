@@ -61,17 +61,22 @@ Schnelle Komprimierung, geringe Kompressionsrate.
 
 Option in bei Verwendung von `tar`: `-z`
 
+Der Inhalt komprimierter Dateien kann mit `zcat` und `zless` angezeigt werden ohne die Datei dekomprimieren zu müssen
+
 === bzip2
 
 Langsame Komprimierung, hohe Kompressionsrate.
 
 Option in bei Verwendung von `tar`: `-j`
 
+Der Inhalt komprimierter Dateien kann mit `bzcat` und `bzless` angezeigt werden ohne die Datei dekomprimieren zu müssen
 === xz
 
 Langsame Komprimierung, schnelle Dekomprimierung, relativ gute Kompressionsrate.
 
 Option in bei Verwendung von `tar`: `-J`
+
+Der Inhalt komprimierter Dateien kann mit `xzcat` und `xzless` angezeigt werden ohne die Datei dekomprimieren zu müssen
 
 === Beispiele
 

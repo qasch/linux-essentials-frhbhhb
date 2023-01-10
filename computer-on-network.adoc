@@ -1,0 +1,50 @@
+= Your Computer on the Network
+
+* *Link Layer:* direkte Verbindung zwischen zwei Geräten
+* *Network Layer:* Routing aus dem eigenen Netz heraus
+* *Application Layer:* direkte Verbindung zweier Anwendungen
+
+== Anzeige Netzwerkkonfiguration
+
+* `ifconfig` ist das Legacy-Tool zur Anzeige der Konfiguration der Interfaces
+* aktueller Nachfolger ist das Kommando `ip` (`ip address show`)
+* Anzeige ähnlich, Syntax deutlich unterschiedlich
+* `ip` nutzt z.B. die CIDR Notation
+
+=== für die Prüfung relevant
+
+* Unterschiede/Aufbau IPv4 zu IPv6
+* Subnetting
+* private IP Adressen
+
+== Netzwerkonfiguration anzeigen
+
+=== akutell
+
+* `ip link show` Anzeige der Interfaces
+* `ip address show` Anzeige Konfiguration Interfaces
+* `ip route show` Anzeige Routingtabelle
+
+=== Legacy
+
+* `ifonfig` Anzeige Konfiguration Interfaces
+* `route` Anzeige Routingtabelle
+
+== DNS
+
+* lokale DNS Konfiguration klassisch in der Datei `/etc/resolv.conf`
+* in der Datei `/etc/hosts` können z.B. lokale IP-Adresse Hostnamen zugewiesen werden - Entsprechung zur Datei `hosts` unter Windows
+* mit dem Kommando `host` kann ein DNS-Lookup vollzogen werden
+* eine Alternative mit mehr Informationen biete das Kommando `dig`
+
+== Sockets / Ports
+
+* offene Ports können mit den Kommandos `netstat` bzw. `ss` (Nachfolger) ermittelt werden
+* Beispielsyntax: 
+** `netstst -tulpn` / `ss -tulpn` TCP und UDP, Listening, Ports, Name des Prozesses
+
+
+== IPv4 / IPv6
+
+* einige der oben genannten Tools geben standardmäßig nur die IPv4 Konfiguration aus
+* die Anzeige von IPv6 kann oft durch die Option `-6` erzwungen werden, bei anderen Tools wird z.B. eine 6 angehängt: `ping` -> `ping6`

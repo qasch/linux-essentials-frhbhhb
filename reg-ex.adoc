@@ -1,0 +1,74 @@
+= Reguläre Ausdrücke
+
+
+Reguläre Ausdrücke bestehen aus Zeichenfolgen, die ein Muster bilden, mit
+welchem zutreffende Zeichenfolgen in einem Textabschnitt gefunden werden können.
+
+* Reguläre Ausdrücke bestehen aus mindestens einem /Atom/
+* ein /Atom/ ist ein einzelnes Zeichen mit oder ohne Sonderbedeutung
+* Zeichen mit Sonderbedeutung sind z.B.
+** `.`: passt auf jedes Zeichen
+** `^`: passt auf den Anfang einer Zeile (/anchor/)
+** `$`: passt auf das Ende einer Zeile (/anchor/)
+
+Beispiele:
+* `bc` passt auf `abcd`, aber nicht auf `a1cd`
+* `.c` passt sowohl auf `abcd`, als auch auf `a1cd`
+* `^cd` passt nicht auf `abcd`
+* `$ab` passt nicht auf `abcd`
+* `^` hat nur eine Sonderbedeutung wenn es am Anfang steht
+  reguläres Zeichen
+* `$` hat nur eine Sonderbedeutung wenn es am Ende steht
+
+== Bracket Expansion
+
+* eine Liste von Zeichen innerhalb von `[]` (insgesamt auch ein /Atom/, obwohl
+  mehr als ein Zeichen)
+* das Atom passt also auf jedes einzelne der Zeichen
+  * `[1b]` passt sowohl auf `abcd` als auch auf `a1cd`
+* es können auch Zeichen ausgeschlossen werden mit `^`
+* aber nur, wenn es am Anfang steht:
+  * `[^1b]`: `1` oder `b` passen also nicht
+* es können auch Bereiche angegeben werden:
+  * `[0-9]` passt auf alle Ziffern
+  * `[a-z]` passt auf alle Kleinbuchstaben
+* Zeichenklassen können mit einzelnen Zeichen und Bereichen kombiniert werden
+* dürfen aber nicht am Ende eines Bereichs stehen
+* sie dürfen nur innerhalb der Brackt Expansion genutzt werden, nicht aber ausserhalb der Klammern
+
+** Quantifiers
+
+- hiermit kann die /Reichweit/ eines Atoms gesteuert werden
+- es wird so eine /Atom Sequence/ definiert, also eine Wiederholung bestimmter Zeichen
+- Quantifiers haben eine unterschiedliche Bedeutung, je nach genutztem Standard
+  - POSIX definiert zwei Arten von RegEx: /basic/ und /extended/
+
+|==
+| Quantifier | /basic/                                      | /extended/        | literale Bedeutung      |
+   | `*`        | beliebig oft                                 | beliebig oft      | am Anfang oder nach `\` |
+   | `+`        | literale Bedeutung wenn nicht nach einem `\` | mindestens 1 mal  | wenn nicht nach `\`     |
+   | `?`        | literale Bedeutung wenn nicht nach einem `\` | ein oder kein mal | wenn nicht nach `\`     |
+
+** Bounds
+
+* erlaubt die Angabe einer exakten Anzahl:
+  * `{i}`: das Atom muss exakt /i/ mal vorkommen
+    * `[:blank:]{2}` passt auf exakt zwei Leerzeichen
+  * `{i,}`: dass Atom muss mindestens /i/ mal vorkommen
+    * `[:blank:]{2,}` passt auf exakt mindestens Leerzeichen
+  * `{i,j}`: mindestens /i/ mal und maximal /j/ mal
+    * `xyz{2,4}` passt auf `xy` gefolgt von vier `z` Zeichen
+    # * `[xyz]{2,4}` passt auf `xy` gefolgt von vier `z` Zeichen
+* passt sowohl ein kurzer als auch ein lange Substring wird der lange gewählt
+* in Basic RegEx müssen die Delimiter hinter einem `\` stehen:
+  * `\{` und `\}`
+* ansonsten reguläre Zeichen
+* wenn auf `\{` ein anderes Zeiche als ein Integer folgt, ist es nicht der
+  Beginn eines Bounds, wird also literal gedeutet
+
+
+== Links
+
+* https://deguggex.com
+* https://regexone.com
+* Debian Wiki Reguläre Ausdrücke

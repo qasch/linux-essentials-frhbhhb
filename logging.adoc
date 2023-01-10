@@ -1,0 +1,24 @@
+= Logging
+
+* unter `/var/log` liegen (klassischerweise) die Logdateien für die verschiedenen Dienste auf dem System
+* hier können Verzeichnisse für einzelne Dienste existieren
+* das Logging übernimmt ein Loggingdienst (klassisch: `syslog`, `rsyslog`, `syslog-ng`, heutzutage: `systemd`/`journald`)
+* i.d.R. liegen diese Dateien in Textform vor, es gibt aber auch Dateien, die mit einem bestimmten Programm geöffnet werden müssen: `wtmp` -> `last`
+* wichtig sind hier z.B. die Datei `syslog`: Sammellogdatei für das System: Angabe von Zeitstempel, hostname, Dienst, PID, Logmeldung
+* mit dem Kommanod `dmesg` kann man sich den Kernel-Ring-Buffer anzeigen lassen
+* hier finden sich hilfreiche Informationen/Meldungen die zur Laufzeit des Systems autreten
+* beim klassischen Logging über den Syslog muss auf eine funktionierende Logrotation geachtet werden (ist bei `systemd/journald` integriert)
+
+== Hauptspeicher
+
+* `free` zeigt die Belegung des Hauptspeichers an
+* der tatsächlich noch zur Verfügung stehende Speicher wird in der Spalte `available` angezeigt
+* die Ausgabe kann mit den Optione `-h` (human-readable), `-k` (Kibibyte) Standardausgabe, `-m` (Mebibyte) und `-g` (Gibibyte) angepasst werden
+
+== Angemeldete Benutzer
+
+Die momemtan bzw. zuletzt angemeldeten Benutzer können mit folgenden Kommandos überprüft werden:
+
+* `last` wer war angelmedet
+* `who` wer ist momentan angemeldet
+* `w` wer ist momentan angemeldet

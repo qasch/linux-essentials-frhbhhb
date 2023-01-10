@@ -111,7 +111,7 @@ Beispiele:
  chmod 000 file.txt (-> ---------)
  chmod 777 file.txt (-> rwxrwxrwx)
 
-== Ändern von Besitzvrehältnissen
+== Ändern von Besitzverhältnissen
 
  chown <user> datei
  chown <user>:<group> datei
