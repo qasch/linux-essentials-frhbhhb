@@ -14,6 +14,19 @@ Es können Dateien und Verzeichnisse verlinkt werden, auch über Partitionsgrenz
 
 == Hardlinks
 
-Hardlinks unterscheiden sich von Softlinks dadurch, dass Hardlinks im Prinzip nichts anderes sind, als ein weitere Dateiname/Zeiger auf einen bestimmten Speicherbereich.
+ ln <link-ziel> <hardlink-name>
 
-Hardlinks verbrauchen also so gut wie gar keinen Platz auf dem Datei
+Hardlinks unterscheiden sich von Softlinks dadurch, dass Hardlinks im Prinzip nichts anderes sind als ein weitere Dateiname/Zeiger auf einen bestimmten Speicherbereich (_Inode_).
+
+ ls -li origdatei
+ ls -li hardlink
+
+Die zweite Spalte der Ausgabe von `ls -l` zeigt die Anzahl der Links auf eine Datei an. Hier steht standardmäßig eine `1`. Jeder Hardlink erhöht den Zähler.
+
+Hardlinks verbrauchen so gut wie gar keinen Platz auf dem Dateisystem und sind im Nachinein nicht mehr vom Original zu unterscheiden.
+
+Dieser Umstand kann z.B. für inkrementelle Datensicherungen verwendet werden.
+
+Wird das Original gelöscht, bleibt der Dateiinhalt weiterhin über den Hardlink zugreifbar.
+
+Im Gegensatz zum Softlink können Hardlinks weder auf Verzeichnisse, noch über Partitionsgrenzen hinaus gesetzt werden.
