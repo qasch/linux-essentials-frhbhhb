@@ -23,3 +23,4 @@ ls -lh
 # Aufruf/Substitution der Variable name
 echo Der Hund heisst $name
 echo letzte Zeile im Script
+

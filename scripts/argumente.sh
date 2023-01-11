@@ -37,3 +37,4 @@ if [ $# -eq 3 ]; then
 else
 	echo Es müssen drei Argumente übergeben werden, übergeben wurden aber nur $#.
 fi
+

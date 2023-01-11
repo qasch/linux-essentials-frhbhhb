@@ -38,3 +38,5 @@ done
 # Daher gilt es als Best Practice, ein Skript mit einem "exit 0" zu beenden.
 [ $2 -eq 10 ] && echo blub
 exit 0
+
+
