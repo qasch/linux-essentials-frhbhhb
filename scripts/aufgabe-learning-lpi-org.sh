@@ -11,7 +11,10 @@ anzahl_argumente=$#
 # Prüfung, ob überhaupt Argumente übergeben wurden.
 #
 # Falls keine Argumente übergeben wurden, wird das Skript mit dem Kommando 
-# exit beendet und der Exit Status 1 zurückgegeben. 
+# exit beendet und der Exit Status 1 zurückgegeben. Der Exit Status (hier 1)
+# ist beliebig wählbar, wir hätten hier auch 127, 42, 1234 oder was auch 
+# immer angeben können. Eine einheitliche Regel gibt es hier nicht, ausser,
+# dass jeder Exit Status ausser der 0 einen Fehler angibt.
 # Ohne exit würde trotzdem der Rest des Skripts abgearbeitet werden.
 if [ $anzahl_argumente -eq 0 ]
 then
