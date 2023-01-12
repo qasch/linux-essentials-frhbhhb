@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Aufgabe aus den Unterlagen von learning.lpi.org (4.1 Lesson 1, 
+# Explorational Exercise 1):
+# Erstellen Sie ein Skript, das eine beliebiege Anzahl an Argumenten 
+# vom Benutzer entgegennimmt aber nur die Argumente ausgibt, die
+# eine Zahl sind und grösser als 10.
+
 anzahl_argumente=$#
 
 # Prüfung, ob überhaupt Argumente übergeben wurden.
@@ -20,11 +26,31 @@ echo "Folgende Argumente haben einen numerischen Wert grösser 10:"
 
 # In der Variablen $@ befinden sich alle dem Skript übergebenen Argumente
 # getrennt durch ein Leerzeichen (-> Array).
+# Neben der Variable $@ gibt es auch noch die Variable $* mit fast der 
+# gleichen Bedeutung.
 for argument in $@
 do
-	if [ $argument -gt 10 ]
+	# Prüfung, ob das Argument eine Ganzzahl ist.
+	# Der reguläre Ausdruck von grep prüft:
+	# Am Anfang der Zeile ('^' ist eine Ziffer 
+	# zwischen 0 und 9. Diese Ziffer darf bis
+	# zum Zeilenende ('$') beliebig of vorkommen,
+	# sonst nichts anderes.
+	# Der Redirect nach '/dev/null' bewirkt, das
+	# die gefundene Zahl nicht ausgegeben wird,
+	# die Ausgabe also generell verworfen wird,
+	# da wir sie nicht benötigen.
+	echo $argument | grep "^[0-9]*$" > /dev/null
+	# Hier wird geprüft, ob grep (das *direkt* zuvor ausgeführte Kommando)
+        # etwas gefunden hat (Exit Status 0) oder nicht.
+	# Der Test auf grösser als 10 wird somit nur auf Zahlen angewendet
+	# und nicht auf Strings, was zu einem Fehler führen würde.
+	if [ $? -eq 0 ]
 	then
-		echo $argument
+		if [ $argument -gt 10 ]
+		then
+			echo $argument
+		fi
 	fi
 done
 
@@ -38,5 +64,3 @@ done
 # Daher gilt es als Best Practice, ein Skript mit einem "exit 0" zu beenden.
 [ $2 -eq 10 ] && echo blub
 exit 0
-
-
